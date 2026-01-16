@@ -13,6 +13,9 @@ const socials: Social[] = await GetSocials();
 </head>
 
 <Layout extraClass="overflow-hidden">
+  <audio hidden loop autoplay id="bgm">
+    <source src="/audio/countdown.mp3" type="audio/mpeg"/>
+  </audio>
   <div class="fixed z-[-100] w-full h-full flex items-center justify-center">
     <div class="z-[-100] fixed w-5xl h-256 bg-radial from-[#281328]/75 to-black" />
   </div>
@@ -27,12 +30,22 @@ const socials: Social[] = await GetSocials();
   </div>
 </Layout>
 <script>
+
+  var htmlAudioElement = document.getElementById("bgm")!;
+  htmlAudioElement.volume! = 0.2;
+
   import type { Countdown } from "#hooks/countdown";
   import { GetCountdown } from "#hooks/countdown";
 
+  function generateTick() {
+    const audio = new Audio("/audio/sfx/tick.wav");
+    audio.volume = 0.45;
+    audio.play();
+  }
+
   const timer = document.getElementById("countdown")!;
   const data: Countdown = await GetCountdown();
-
+  generateTick();
   if (!data.enabled) {
     timer.textContent = data.countdown_target.toString();
   } else {
@@ -54,6 +67,8 @@ const socials: Social[] = await GetSocials();
       timer.textContent = d > 0
         ? `${d}:${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
         : `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      generateTick();
+        
     }
 
     updateCountdown(); // call it once immediately
