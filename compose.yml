@@ -11,11 +11,14 @@ services:
       - oneshot3d-web
 
   onesh3d-web:
-    build: ./web
+    build: 
+      context: ./web
+      args:
+        - PUBLIC_API_URL=https://oneshot3d-game.com/api/
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - PUBLIC_API_URL=https://oneshot3d-game.com/api/
+      
     ports:
       - "4321:4321"
     depends_on:
