@@ -11,8 +11,6 @@ services:
         
     ports:
       - "3862:3862"
-    volumes:
-      - ./api/data:/app/data
     networks:
       - oneshot3d-web
 
