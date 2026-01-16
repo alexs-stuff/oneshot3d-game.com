@@ -1,6 +1,7 @@
 {
   "name": "one3d-api",
   "type": "module",
+  "packageManager": "pnpm@latest",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
