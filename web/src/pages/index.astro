@@ -1,46 +1,62 @@
 ---
+import { GetCountdown } from "#hooks/countdown";
+import { GetSocials, type Social } from "#hooks/social";
 import IconButton from "../components/IconButton.astro";
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
 
-const redirects = [
-    {
-        header:"steam",
-        url: "https://store.steampowered.com/app/4184280/OneShot_3D/"
-    },
-    {
-        header:"discord",
-        url: "https://discord.gg/E8DnA6ZjJP"
-    }
-]
-
-const search = Astro.url.searchParams.get('redirect') || ''
-const match = redirects.find(r => r.header === search);
-
-if (match) {
-  return Astro.redirect(match.url);
-}
+const socials: Social[] = await GetSocials();
 ---
 
 <head>
-        <meta property="og:title" content="OneShot 3D"/>
-        <meta property="og:description" content="Coming soon...\n -alex"/>
+  <meta property="og:title" content="OneShot 3D" />
+  <meta property="og:description" content="Coming soon...\n -alex" />
 </head>
-<Layout>
-  <div class="z-[-100] fixed w-full h-full bg-radial from-blue-600/25 to-black"/>
 
-  <div class="flex flex-col justify-center items-center w-full h-full">
-    <span class="text-[42px] font-black">Soon, 2026.</span>
-    <span class="text-[20px]" id="time">{new Date().toLocaleTimeString('en-GB')}</span>
+<Layout extraClass="overflow-hidden">
+  <div class="fixed z-[-100] w-full h-full flex items-center justify-center">
+    <div class="z-[-100] fixed w-5xl h-256 bg-radial from-[#281328]/75 to-black" />
+  </div>
+
+  <div class="flex flex-col justify-center items-center w-full h-full text-center">
+    <span class="text-[42px] font-black" id="countdown"></span>
     <div class="flex flex-row w-full justify-center items-center">
-      <IconButton iconType="Discord" href={redirects[1].url}/>
+      {socials?.map((social: Social) => (
+        <IconButton href={social.url} icon={social.social} alt={social.display_name} />
+      ))}
     </div>
   </div>
 </Layout>
-
 <script>
-  let timer = document.getElementById("time")!;
-  setInterval(() => {
-    timer.textContent = new Date().toLocaleTimeString('en-GB');
-  }, 1000)
+  import type { Countdown } from "#hooks/countdown";
+  import { GetCountdown } from "#hooks/countdown";
 
+  const timer = document.getElementById("countdown")!;
+  const data: Countdown = await GetCountdown();
+
+  if (!data.enabled) {
+    timer.textContent = data.countdown_target.toString();
+  } else {
+    const targetTime = data.countdown_target  * 1000; // convert to ms
+
+    function updateCountdown() {
+      const remaining = Math.floor((targetTime - Date.now()) / 1000);
+
+      if (remaining <= 0) {
+        window.location.reload();
+        return;
+      }
+
+      const d = Math.floor(remaining / 86400);
+      const h = Math.floor((remaining % 86400) / 3600);
+      const m = Math.floor((remaining % 3600) / 60);
+      const s = remaining % 60;
+
+      timer.textContent = d > 0
+        ? `${d}:${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
+        : `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    updateCountdown(); // call it once immediately
+    setInterval(updateCountdown, 1000); // then every second
+  }
 </script>

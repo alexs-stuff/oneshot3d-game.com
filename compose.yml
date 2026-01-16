@@ -1,0 +1,28 @@
+services:
+  onesh3d-api:
+    build: ./api
+    env_file: ./api/.env
+    restart: unless-stopped
+    ports:
+      - "3862:3862"
+    volumes:
+      - ./api/data:/app/data
+    networks:
+      - oneshot3d-web
+
+  onesh3d-web:
+    build: ./web
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    env_file: ./web/.env
+    ports:
+      - "4321:4321"
+    depends_on:
+      - onesh3d-api
+    networks:
+      - oneshot3d-web
+
+networks:
+  oneshot3d-web:
+    driver: bridge

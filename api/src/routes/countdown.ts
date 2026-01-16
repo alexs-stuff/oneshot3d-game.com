@@ -5,10 +5,15 @@ import countdown from "#json_datafiles/countdown.json";
 
 
 export function get_countdown(c:Context) {
+    
+    let message:string = ""
+    if (!countdown.enabled) {
+        message = countdown.was_enabled ? get_message("message.outnow")! : get_message("error.notyet")!;
+    }
     return c.json({
-        countdown: 0,
-        info: countdown.was_enabled && countdown.countdown_time <= 0 ? get_message("message.outnow") : get_message("error.notyet") ,
-        enabled: false,
+        countdown_target:  countdown.enabled ? countdown.countdown_time : message,
+        countdown_started: countdown.countdown_started_timestamp,
+        enabled: countdown.enabled,
         success: true
     })
 }

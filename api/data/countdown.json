@@ -1,6 +1,6 @@
 {
-    "enabled": false,
+    "enabled": true,
     "was_enabled":false,
-    "countdown_time": 0,
-    "countdown_progress": 0
+    "countdown_time": 999999999999999,
+    "countdown_started_timestamp": 0
 }
