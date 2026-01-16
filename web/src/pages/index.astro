@@ -1,0 +1,46 @@
+---
+import IconButton from "../components/IconButton.astro";
+import Layout from "../layouts/Layout.astro"
+
+const redirects = [
+    {
+        header:"steam",
+        url: "https://store.steampowered.com/app/4184280/OneShot_3D/"
+    },
+    {
+        header:"discord",
+        url: "https://discord.gg/E8DnA6ZjJP"
+    }
+]
+
+const search = Astro.url.searchParams.get('redirect') || ''
+const match = redirects.find(r => r.header === search);
+
+if (match) {
+  return Astro.redirect(match.url);
+}
+---
+
+<head>
+        <meta property="og:title" content="OneShot 3D"/>
+        <meta property="og:description" content="Coming soon...\n -alex"/>
+</head>
+<Layout>
+  <div class="z-[-100] fixed w-full h-full bg-radial from-blue-600/25 to-black"/>
+
+  <div class="flex flex-col justify-center items-center w-full h-full">
+    <span class="text-[42px] font-black">Soon, 2026.</span>
+    <span class="text-[20px]" id="time">{new Date().toLocaleTimeString('en-GB')}</span>
+    <div class="flex flex-row w-full justify-center items-center">
+      <IconButton iconType="Discord" href={redirects[1].url}/>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  let timer = document.getElementById("time")!;
+  setInterval(() => {
+    timer.textContent = new Date().toLocaleTimeString('en-GB');
+  }, 1000)
+
+</script>

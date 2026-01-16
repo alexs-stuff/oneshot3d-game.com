@@ -1,0 +1,20 @@
+---
+    import { Image } from "astro:assets";
+
+    import discordWhite from "../assets/icons/discord/symbol/Discord-Symbol-White.svg";
+    import discordBlack from "../assets/icons/discord/symbol/Discord-Symbol-Black.svg";
+
+    interface CompProps {
+        iconType: "Discord"
+        href: string
+    }
+
+    const { iconType, href } = Astro.props as CompProps;
+
+
+
+---
+
+<a class="flex items-center justify-center w-16 h-16 group"  href={href}>
+  <Image class="scale-60 opacity-50 group-hover:scale-70 group-hover:opacity-100 duration-255"  src={discordWhite} alt={"Icon Button"}></Image>  
+</a>

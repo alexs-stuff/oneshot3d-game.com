@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+    --mouse-offset-x: .5;
+    --mouse-offset-y: .5;
+
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    height: 100%;
+
+    cursor: none;
+}
+
+* {
+    -webkit-user-drag: none;
+}
+
+
+.app {
+    transform: translate(calc(var(--mouse-offset-x) * -1%) , calc(var(--mouse-offset-y) * -1%));
+}
+
+
+a:hover {
+    cursor: none;
+}

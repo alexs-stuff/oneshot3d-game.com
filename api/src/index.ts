@@ -1,6 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { get_countdown, set_countdown } from './countdown/countdown.js';
+import { get_countdown, set_countdown } from '#routes/countdown.js';
 
 const app = new Hono()
 

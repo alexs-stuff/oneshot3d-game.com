@@ -16,7 +16,8 @@
     "resolveJsonModule": true,
 
     "paths": {
-      "#json_datafiles/*": ["./data/*"]
+      "#json_datafiles/*": ["./data/*"],
+      "#routes/*": ["./src/routes/*"]
     }
   },
   "exclude": ["node_modules"],

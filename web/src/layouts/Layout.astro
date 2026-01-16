@@ -1,0 +1,31 @@
+---
+import Cursor from "../components/Cursor.astro";
+import "../styles/global.css";
+import '@fontsource/inter';
+
+---
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>OneShot 3D</title>
+
+	</head>
+
+
+
+	<body class="w-screen h-screen  bg-black text-white">
+		<Cursor/>
+		
+		<div class="app w-full h-full">
+			<slot/>
+		</div>
+	</body>
+	
+</html>
+
+
