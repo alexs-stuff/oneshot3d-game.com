@@ -12,17 +12,17 @@ const socials: Social[] = await GetSocials();
   <meta property="og:description" content="Coming soon...\n -alex" />
 </head>
 
-<Layout extraClass="overflow-hidden">
+<Layout extraClass="bg-radial from-[#281328]/75 to-black">
+
   <audio hidden loop autoplay id="bgm">
     <source src="/audio/countdown.mp3" type="audio/mpeg"/>
   </audio>
-  <div class="fixed z-[-100] w-full h-full flex items-center justify-center">
-    <div class="z-[-100] fixed w-5xl h-256 bg-radial from-[#281328]/75 to-black" />
-  </div>
+
+
 
   <div class="flex flex-col justify-center items-center w-full h-full text-center">
-    <span class="text-[42px] font-black" id="countdown"></span>
-    <div class="flex flex-row w-full justify-center items-center">
+    <span class="text-[42px] font-black w-full" id="countdown"></span>
+    <div class="flex flex-row w-full flex-wrap justify-center items-center">
       {socials?.map((social: Social) => (
         <IconButton href={social.url} icon={social.social} alt={social.display_name} />
       ))}
@@ -45,12 +45,12 @@ const socials: Social[] = await GetSocials();
 
   const timer = document.getElementById("countdown")!;
   const data: Countdown = await GetCountdown();
-  generateTick();
+
   if (!data.enabled) {
     timer.textContent = data.countdown_target.toString();
   } else {
     const targetTime = data.countdown_target  * 1000; // convert to ms
-
+    generateTick();
     function updateCountdown() {
       const remaining = Math.floor((targetTime - Date.now()) / 1000);
 
@@ -71,7 +71,7 @@ const socials: Social[] = await GetSocials();
         
     }
 
-    updateCountdown(); // call it once immediately
-    setInterval(updateCountdown, 1000); // then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000); 
   }
 </script>

@@ -9,6 +9,7 @@
 html {
     font-family: "Inter", sans-serif;
     height: 100%;
+    width: 100%;
 
     cursor: none;
 }
@@ -16,6 +17,7 @@ html {
 * {
     -webkit-user-drag: none;
 }
+
 
 
 .app {
