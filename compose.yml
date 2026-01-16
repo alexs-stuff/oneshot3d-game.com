@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-    env_file: ./web/.env
+      - PUBLIC_API_URL=https://oneshot3d-game.com/api/
     ports:
       - "4321:4321"
     depends_on:
