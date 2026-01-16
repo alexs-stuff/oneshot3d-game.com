@@ -1,4 +1,4 @@
-import { serve } from '@hono/node-server'
+
 import { Hono } from 'hono'
 import { get_countdown, set_countdown } from '#routes/countdown.js';
 import { get_socials } from '#routes/socials';
@@ -29,9 +29,8 @@ app.get("/socials/get", async (c) => {
 })
 //#endregion
 
-serve({
-  fetch: app.fetch,
+Bun.serve({
   port: 3862,
-}, (info) => {
-  console.log(`Server is running on http://localhost:${info.port}`)
+  fetch: app.fetch,
+  development: false
 })
