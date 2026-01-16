@@ -3,6 +3,12 @@ services:
     build: ./api
     env_file: ./api/.env
     restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./api/data
+          target: /app/data
+        
     ports:
       - "3862:3862"
     volumes:
