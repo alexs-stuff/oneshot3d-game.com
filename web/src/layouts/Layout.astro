@@ -3,7 +3,13 @@ import Cursor from "../components/Cursor.astro";
 import "../styles/global.css";
 import '@fontsource/inter';
 
-const {extraClass} = Astro.props
+interface LayoutProps {
+	extraClass?: string,
+	efxEnabled?: boolean;
+	centeredItems?: boolean;
+}
+
+const {extraClass, efxEnabled, centeredItems} = Astro.props as LayoutProps
 ---
 
 <html lang="en">
@@ -19,11 +25,14 @@ const {extraClass} = Astro.props
 
 
 
-		<body class={`w-full h-full bg-black text-white ${extraClass}`}>
+	<body class={`text-center w-full h-full bg-black text-white ${extraClass}`}>
 		<Cursor/>
 		
-		<div class="app w-full h-full">
-			<slot/>
+		<div class={`${efxEnabled ? "app" : ""} w-full h-full`}>
+			<div class={`${centeredItems ? "flex flex-col justify-center items-center w-full h-full gap-2" : ""}`}>
+				<slot/>
+			</div>
+			
 		</div>
 	</body>
 	
