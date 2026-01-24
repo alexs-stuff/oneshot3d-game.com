@@ -14,5 +14,15 @@ export default defineConfig({
     plugins: [
       tailwindcss()],
   },
+  redirects: {
+    "/play/game": "/game",
+    "/game/play": "/game",
+    "/play": "/game",
+
+    "/donations": "/donate",
+    "/donation": "/donate",
+
+    "/docs": "https://docs.oneshot3d-game.com"
+  },
   output: "server"
 });
