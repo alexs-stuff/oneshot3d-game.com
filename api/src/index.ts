@@ -1,7 +1,6 @@
 
 import { Hono } from 'hono'
 import { get_countdown, set_countdown } from '#routes/countdown.js';
-import { get_socials } from '#routes/socials';
 import { cors } from 'hono/cors';
 
 const app = new Hono()
@@ -23,10 +22,7 @@ app.post("/countdown/set", async(c) => {
 })
 //#endregion
 
-//#region Socials
-app.get("/socials/get", async (c) => {
-  return await get_socials(c);
-})
+
 //#endregion
 
 Bun.serve({
