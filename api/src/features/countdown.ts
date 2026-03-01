@@ -4,9 +4,10 @@ import generate_error from "./error_gen/error_generator";
 import { resolve } from "path";
 
 
-const isDocker = process.env.DOCKER === 'true';
 
-const COUNTDOWN_FILE = "../../storage/countdown.json";
+const isDocker = await Bun.file('/.dockerenv').exists();
+const COUNTDOWN_FILE = isDocker ? '/storage/countdown.json' : '../../storage/countdown.json';
+
 
 
 export async function get_countdown(c:Context) {
