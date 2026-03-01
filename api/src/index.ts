@@ -5,6 +5,7 @@ import { cors } from 'hono/cors';
 import { bug_report } from './features/bugreporting.js';
 import { swaggerUI } from '@hono/swagger-ui';
 import swaggerConfig from './swagger.config.js';
+import { file } from 'bun';
 
 const app = new Hono()
 app.use(cors({ origin: [
@@ -15,8 +16,10 @@ app.use(cors({ origin: [
 }))
 
 
+
 const prefix = process.env.DOCS_BASE_PATH || '';
 
+await Bun.spawn(['mkdir', '-p', '/storage']).exited;
 
 //swagger docs
 app.get("/docs/json/", (c) => c.json(swaggerConfig));
