@@ -1,7 +1,6 @@
 import type { Context } from "hono";
 import type { CountdownData, CountdownTemplate } from "../types/countdown";
 import generate_error from "./error_gen/error_generator";
-import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from "path";
 
 
@@ -10,8 +9,8 @@ const isDocker = process.env.DOCKER === 'true';
 const COUNTDOWN_FILE = "../../storage/countdown.json";
 
 
-export function get_countdown(c:Context) {
-    const countdown_contents = readFileSync(COUNTDOWN_FILE, 'utf-8');
+export async function get_countdown(c:Context) {
+    const countdown_contents = await Bun.file(COUNTDOWN_FILE).text();
     if (countdown_contents == null) {
         return c.json(generate_error("countdown data not found"), 404)
     }
@@ -55,6 +54,6 @@ function write_countdown(data: CountdownTemplate) {
         started_at: Date.now() / 1000,
         ends_at: data.target_time,
     }
-    writeFileSync(COUNTDOWN_FILE, JSON.stringify(countdown_data,));
+    Bun.write(COUNTDOWN_FILE, JSON.stringify(countdown_data, null, 2));
     
 }

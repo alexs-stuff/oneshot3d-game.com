@@ -25,8 +25,8 @@ app.get("/docs/", (c) => c.redirect("/docs"));
 app.get("/docs", swaggerUI({ url: '/docs/json/',  }));
 
 // countdown
-app.get("/countdown", (c) => {
-  return get_countdown(c);
+app.get("/countdown", async (c) => {
+  return await get_countdown(c);
 });
 
 app.post("/countdown/set", (c) => {
