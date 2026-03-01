@@ -11,15 +11,11 @@ import Layout from "../layouts/Layout.astro";
   <meta property="og:description" content="Coming soon...\n -alex" />
 </head>
 
-<Layout centeredItems={true} efxEnabled={true} extraClass="bg-radial from-[#281328]/75 to-black">
+<Layout efxEnabled={true} extraClass="bg-radial from-[#281328]/75 to-black " extraClassApp="flex flex-col justify-center items-center">
 
   <audio hidden loop autoplay id="bgm">
     <source src="/audio/countdown.mp3" type="audio/mpeg"/>
   </audio>
-
-
-
-
     <span class="text-[42px] font-black w-full" id="countdown"></span>
     <div class="flex flex-row w-full flex-wrap justify-center items-center">
         <Socials/>

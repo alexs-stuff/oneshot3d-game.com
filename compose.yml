@@ -3,11 +3,11 @@ services:
     build: ./api
     env_file: ./api/.env
     restart: unless-stopped
-    develop:
-      watch:
-        - action: sync
-          path: ./api/data
-          target: /app/data
+    environment:
+      - DOCKER=true
+    volumes:
+      - ./api_storage:/usr/src/app/storage
+
         
     ports:
       - "3862:3862"
@@ -18,7 +18,7 @@ services:
     build: 
       context: ./web
       args:
-        - PUBLIC_API_URL=https://oneshot3d-game.com/api/
+        - PUBLIC_API_URL=https://oneshot3d-game.com/api
     restart: unless-stopped
     environment:
       - NODE_ENV=production

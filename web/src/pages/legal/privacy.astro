@@ -1,13 +1,6 @@
 ---
-import { marked } from 'marked';
-import "../../styles/legal.css";
+import Legal from "../../layouts/Legal.astro";
 
-import Layout from "../../layouts/Layout.astro";
-
-const privacy = await fetch("https://cdn.alex427.com/onesh~/terms/privacy.md").then(res => res.text())
-const md = marked(privacy)
 ---
 
-<Layout extraClass="text-left">
-    <article class="legal-contents" set:html={md} />
-</Layout>
+<Legal legalMdUrl="https://cdn.alex427.com/onesh~/terms/privacy.md" />

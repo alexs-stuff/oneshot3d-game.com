@@ -4,7 +4,7 @@ import { get_countdown, set_countdown } from './features/countdown.js';
 import { cors } from 'hono/cors';
 import { bug_report } from './features/bugreporting.js';
 import { swaggerUI } from '@hono/swagger-ui';
-import swaggerConfig from './swagger.config.mjs';
+import swaggerConfig from './swagger.config.js';
 
 const app = new Hono()
 app.use(cors({ origin: [
@@ -15,6 +15,7 @@ app.use(cors({ origin: [
 }))
 
 
+const prefix = process.env.DOCS_BASE_PATH || '';
 
 
 //swagger docs
@@ -23,6 +24,14 @@ app.get("/docs/json/", (c) => c.json(swaggerConfig));
 app.get("/docs/", (c) => c.redirect("/docs"));
 app.get("/docs", swaggerUI({ url: '/docs/json/',  }));
 
+// countdown
+app.get("/countdown", (c) => {
+  return get_countdown(c);
+});
+
+app.post("/countdown/set", (c) => {
+  return set_countdown(c, c.req.header("X-API-Key") || "");
+});
 
 
 Bun.serve({

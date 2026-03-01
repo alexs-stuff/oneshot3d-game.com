@@ -7,11 +7,12 @@ import "@fontsource/inter";
 
 interface LayoutProps {
   extraClass?: string;
+  extraClassApp?: string;
   efxEnabled?: boolean;
   centeredItems?: boolean;
 }
 
-const { extraClass, efxEnabled } = Astro.props as LayoutProps;
+const { extraClass, extraClassApp, efxEnabled } = Astro.props as LayoutProps;
 ---
 
 <html lang="en">
@@ -26,10 +27,11 @@ const { extraClass, efxEnabled } = Astro.props as LayoutProps;
   </head>
 
   <body class="w-full h-auto min-h-full   text-white bg-black">
+     <Cursor />
     <div class={`text-center w-full min-h-screen pb-12 ${extraClass}`}>
-      <Cursor />
+     
 
-      <div class={`${efxEnabled ? "app" : ""}`}>
+      <div class={`${efxEnabled ? "app" : ""} ${extraClassApp} w-full min-h-screen h-auto`}>
           <slot />
       </div>
     </div>
