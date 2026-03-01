@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import type { CountdownData, CountdownTemplate } from "../types/countdown";
 import generate_error from "./error_gen/error_generator";
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from "path";
 
 
