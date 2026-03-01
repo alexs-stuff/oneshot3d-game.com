@@ -13,20 +13,19 @@ export default {
       },
     },
     "/countdown/update": {
-        post: {
+      post: {
         tags: ["Countdown"],
         summary: "updates the current countdown info",
         parameters: [
-            {
-                name: "x-api-key",
-                in: "query",
-                required: true,
-                schema: {
-                    type: "string",
-                    
-                }
-            }
-        ]
+          {
+            name: "x-api-key",
+            in: "query",
+            required: true,
+            schema: {
+              type: "string",
+            },
+          },
+        ],
       },
     },
     "/bugs/report": {

@@ -20,8 +20,8 @@ app.use(cors({ origin: [
 //swagger docs
 app.get("/docs/json/", (c) => c.json(swaggerConfig));
 
-app.get("/docs/", swaggerUI({ url: '/docs/json/',  }))
-app.get("/docs", swaggerUI({ url: '/docs/json/',  }))
+app.get("/docs/", (c) => c.redirect("/docs"));
+app.get("/docs", swaggerUI({ url: '/docs/json/',  }));
 
 
 

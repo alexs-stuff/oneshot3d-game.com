@@ -1,0 +1,34 @@
+---
+import FooterCategory from "./FooterCategory.astro";
+---
+
+<footer
+  class="bg-[#101010] border-t border-t-[#202020] w-full flex flex-col px-8 py-4 md:px-20 lg:px-36 xl:px-42 2xl:px-64 gap-2 transition-[2000ms]"
+>
+  <div
+    class="flex flex-row flex-wrap justify-center gap-8 items-center text-[16px]"
+  >
+    <FooterCategory header="Project">
+      <a href="/docs">Documentation</a>
+      <a href="https://git.alex427.com/alexs-stuff/oneshot-3d">Source Code</a>
+    </FooterCategory>
+    <FooterCategory header="Legal">
+      <a href="/legal/terms">Terms of Service</a>
+      <a href="/legal/privacy">Privacy Policy</a>
+    </FooterCategory>
+    <FooterCategory header="Support">
+      <a href="/donate">Donations &lt;3</a>
+    </FooterCategory>
+  </div>
+  <div class="w-full border border-[#202020]"></div>
+  <div class="flex flex-col text-[16px] text-center md:text-left pt-2">
+    <span
+      >Copyright &copy; {new Date().getFullYear()} Alex's Stuff. All rights reserved.</span
+    >
+    <span
+      >&quot;OneShot&quot;, &quot;Niko OneShot&quot; is property of <strong
+        >Future Cat Games</strong
+      > and <strong>Komodo</strong>.</span
+    >
+  </div>
+</footer>

@@ -6,11 +6,14 @@
 
 <script>
 
+
+
 const cursor:HTMLElement = document.getElementById("cursor_oneshot")!
 
+cursor.style.visibility = "hidden"
 
 function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia("(max-width: 768px)").matches;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia("(max-width: 480px)").matches;
 }
 
 document.addEventListener("mousemove", evt => {
