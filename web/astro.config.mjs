@@ -11,7 +11,8 @@ export default defineConfig({
   }),
   vite: {
     plugins: [
-      tailwindcss()],
+      tailwindcss()
+    ],
   },
   redirects: {
     "/play/game": "/game",
@@ -21,7 +22,14 @@ export default defineConfig({
     "/donations": "/donate",
     "/donation": "/donate",
 
-    "/docs": "https://docs.oneshot3d-game.com"
+    "/docs": "https://docs.oneshot3d-game.com",
+
+    "/terms": "/legal/terms",
+    "/tos": "/legal/terms",
+    "/legal/tos": "/legal/terms",
+
+    "/privacy": "/legal/privacy"
+    
   },
   output: "server"
 });

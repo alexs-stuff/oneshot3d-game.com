@@ -12,10 +12,6 @@ import Layout from "../layouts/Layout.astro";
 </head>
 
 <Layout efxEnabled={true} extraClass="bg-radial from-[#281328]/75 to-black " extraClassApp="flex flex-col justify-center items-center">
-
-  <audio hidden loop autoplay id="bgm">
-    <source src="/audio/countdown.mp3" type="audio/mpeg"/>
-  </audio>
     <span class="text-[42px] font-black w-full" id="countdown"></span>
     <div class="flex flex-row w-full flex-wrap justify-center items-center">
         <Socials/>
@@ -23,48 +19,75 @@ import Layout from "../layouts/Layout.astro";
   </div>
 </Layout>
 <script>
+import { GetCountdown, type CountdownData } from "#hooks/countdown.js";
 
-  var htmlAudioElement = document.getElementById("bgm")!;
-  htmlAudioElement.volume! = 0.2;
+let audioPlaying = false;
+let audio: HTMLAudioElement | null = null;
+let tickAudio: HTMLAudioElement | null = null;
 
-  import type { Countdown } from "#hooks/countdown";
-  import { GetCountdown } from "#hooks/countdown";
+function formatTime(ms: number): string {
+  if (ms <= 0) return "00:00:00:00";
 
-  function generateTick() {
-    const audio = new Audio("/audio/sfx/tick.wav");
-    audio.volume = 0.45;
-    audio.play();
+  const totalSeconds = Math.floor(ms / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  return `${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+}
+
+function startMusic(src: string) {
+  if (audioPlaying) return;
+  audio = new Audio(src);
+  audio.loop = true;
+  audio.volume = 0.5;
+  audio.play().catch((e) => console.warn("audio blocked by browser:", e));
+  audioPlaying = true;
+}
+
+function stopMusic() {
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+    audio = null;
   }
+  audioPlaying = false;
+}
 
-  const timer = document.getElementById("countdown")!;
-  const data: Countdown = await GetCountdown();
+function playTick() {
+  tickAudio = new Audio("/sfx/tick.wav");
+  tickAudio.volume = 0.3;
+  tickAudio.play().catch((e) => console.warn("tick blocked:", e));
+}
+
+async function init() {
+  const el = document.getElementById("countdown");
+  if (!el) return;
+
+  const data = await GetCountdown();
 
   if (!data.enabled) {
-    timer.textContent = data.countdown_target.toString();
-  } else {
-    const targetTime = data.countdown_target  * 1000; // convert to ms
-    generateTick();
-    function updateCountdown() {
-      const remaining = Math.floor((targetTime - Date.now()) / 1000);
-
-      if (remaining <= 0) {
-        window.location.reload();
-        return;
-      }
-
-      const d = Math.floor(remaining / 86400);
-      const h = Math.floor((remaining % 86400) / 3600);
-      const m = Math.floor((remaining % 3600) / 60);
-      const s = remaining % 60;
-
-      timer.textContent = d > 0
-        ? `${d}:${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
-        : `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-      generateTick();
-        
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000); 
+    stopMusic();
+    return;
   }
+
+  startMusic("/audio/thetower.ogg");
+
+  el.textContent = formatTime(data.ends_at - Date.now());
+
+  setInterval(() => {
+    const remaining = data.ends_at - Date.now();
+    if (remaining <= 0) {
+      el.textContent = formatTime(0);
+      stopMusic();
+      return;
+    }
+    el.textContent = formatTime(remaining);
+    playTick();
+  }, 1000);
+}
+
+init();
 </script>
