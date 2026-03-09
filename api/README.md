@@ -1,8 +1,3 @@
-```
-npm install
-npm run dev
-```
+# oneshot3d-game.com/api/
 
-```
-open http://localhost:3000
-```
+oneshot 3d api

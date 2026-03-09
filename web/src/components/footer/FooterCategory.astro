@@ -1,0 +1,11 @@
+---
+const { header} = Astro.props
+---
+
+<div class="max-w-[50%] w-full grid grid-cols-2 items-center text-[20px] text-[#b3b3b3]">
+    <span class="text-[28px] text-white text-left">{header}</span>
+    <div class="flex flex-row justify-end items-center gap-4">
+        <slot/>
+    </div>
+
+</div>

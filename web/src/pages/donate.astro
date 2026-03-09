@@ -1,7 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
+import Normal from "../layouts/Normal.astro";
+import DonationMethod, { DonationMethodType } from "../components/buttons/DonationMethod.astro"
 ---
-<Layout>
+<Normal className="text-center py-12 gap-12">
+    <div>
+        <h1 class="text-4xl">Ever wanted to donate to the OneShot 3D project?</h1>
+        <span class="text-3xl">Well, you can!</span>
+    </div>
+
+    <section class="text-2xl" id="methods">
+        <span>You are able to donate via these methods:</span>
+        <div class="flex flex-row justify-center items-center flex-wrap">
+        <DonationMethod type={DonationMethodType.Kofi}/>
+        </div>
+    </section>
     
-</Layout>
+</Normal>

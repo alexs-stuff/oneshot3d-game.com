@@ -4,7 +4,7 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "paths": {
-      "#hooks/*": ["./src/hooks/*"]
+      "#assets/*": ["./src/assets/*"]
     }
   }
 }

@@ -9,6 +9,10 @@ export default defineConfig({
   adapter: node({
     mode: "standalone"
   }),
+   build: {
+    assets: "static/cdn",
+    assetsPrefix: 'https://cdn.alex427.com/static/oneshot3d-game.com',
+  },
   vite: {
     plugins: [
       tailwindcss()

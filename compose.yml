@@ -1,18 +1,19 @@
-services:
-  onesh3d-api:
-    build: ./api
-    env_file: ./api/.env
-    restart: unless-stopped
-    environment:
-      - DOCKER=true
-    volumes:
-      - ./api_storage:/storage
 
-        
-    ports:
-      - "3862:3862"
-    networks:
-      - oneshot3d-web
+services:
+#  onesh3d-api:
+#    build: ./api
+#    env_file: ./api/.env
+#    restart: unless-stopped
+#    environment:
+#      - DOCKER=true
+#    volumes:
+#      - ./api_storage:/storage
+#
+#        
+#    ports:
+#      - "3862:3862"
+#    networks:
+#      - oneshot3d-web
 
   onesh3d-web:
     build: 
@@ -29,7 +30,3 @@ services:
       - onesh3d-api
     networks:
       - oneshot3d-web
-
-networks:
-  oneshot3d-web:
-    driver: bridge

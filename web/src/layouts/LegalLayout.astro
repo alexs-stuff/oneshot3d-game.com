@@ -1,0 +1,44 @@
+---
+import { marked } from 'marked';
+
+
+import Normal from "./Normal.astro";
+import "../styles/legals.css"
+
+const { url } = Astro.props as { url: string };
+
+const privacy = await fetch(url).then(res => res.text());
+
+const sections = privacy.split(/(?=^# (?!#))/m).filter(s => s.trim());
+
+const parsed = sections.map((section, i) => {
+    const titleMatch = section.match(/^# \**(.+?)\**$/m);
+    const title = titleMatch ? titleMatch[1] : 'Untitled';
+
+    const subsections = section.split(/(?=^## )/m).filter(s => s.trim());
+
+    const mainHtml = marked(subsections[0]);
+    const subs = subsections.slice(1).map((sub, j) => {
+        const subTitleMatch = sub.match(/^## \**(.+?)\**$/m);
+        const subTitle = subTitleMatch ? subTitleMatch[1] : 'Untitled';
+        const subHtml = marked(sub);
+        return { title: subTitle, id: `s-${i}-s${j}`, html: subHtml };
+    });
+
+    return { title, id: `s-${i}`, html: mainHtml, subs };
+});
+---
+
+
+
+<Normal className="terms-page text-center pb-16 gap-8 max-w-186">
+       {parsed.map(s => (
+        <section class="terms-section flex flex-col" id={s.id}>
+            <div set:html={s.html} />
+            {s.subs.map(sub => (
+                <section class="terms-subsection" id={sub.id} set:html={sub.html} />
+            ))}
+        </section>
+    ))}
+</Layout>
+
