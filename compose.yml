@@ -26,7 +26,5 @@ services:
       
     ports:
       - "4321:4321"
-    depends_on:
-      - onesh3d-api
-    networks:
-      - oneshot3d-web
+#    depends_on:
+#      - onesh3d-api
