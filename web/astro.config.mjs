@@ -10,7 +10,11 @@ export default defineConfig({
     mode: "standalone"
   }),
    build: {
-    assetsPrefix: 'https://cdn.alex427.com/static/oneshot3d-game.com',
+    assets: "oneshot3d-game.com",
+    assetsPrefix: 'https://cdn.alex427.com/static/',
+  },
+  image: {
+    remotePatterns: [{ hostname: "cdn.alex427.com" }],
   },
   vite: {
     plugins: [
