@@ -10,7 +10,6 @@ export default defineConfig({
     mode: "standalone"
   }),
    build: {
-    assets: "",
     assetsPrefix: 'https://cdn.alex427.com/static/oneshot3d-game.com',
   },
   vite: {
