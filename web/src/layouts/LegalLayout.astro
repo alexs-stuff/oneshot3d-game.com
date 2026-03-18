@@ -31,7 +31,7 @@ const parsed = sections.map((section, i) => {
 
 
 
-<Normal className="terms-page text-center gap-8 max-w-186">
+<Normal className="terms-page text-center gap-8 max-w-186 pb-12">
        {parsed.map(s => (
         <section class="terms-section flex flex-col" id={s.id}>
             <div set:html={s.html} />

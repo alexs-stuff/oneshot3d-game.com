@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import NavbarButton from "../components/navbar/NavbarButton.astro";
 import FooterCategory from "../components/footer/FooterCategory.astro";
 
-const { className } = Astro.props;
+const { className, noPadding } = Astro.props as {className: string, noPadding: boolean};
 ---
 
 <!doctype html>
@@ -38,9 +38,9 @@ const { className } = Astro.props;
         <NavbarButton href="/" buttonText="Home" />
         <NavbarButton href="/about" buttonText="About" />
       </div>
-      <div>a</div>
+      <div></div>
     </nav>
-    <div class="flex flex-col pt-18 pb-12 justify-start items-center">
+    <div class={`flex flex-col ${noPadding ? "" : "pt-12.5"} justify-start items-center`}>
       <main
         class={`flex flex-col  text-white w-full min-h-screen h-auto ${className != null ? className : ""}`}
       >
@@ -52,25 +52,25 @@ const { className } = Astro.props;
       class="relative bg-[#000000] w-full p-4 pb-2 text-white flex flex-col"
     >
       <div
-        class="w-full flex flex-col justify-center items-center text-center gap-4 md:text-right md:gap-0"
+        class="w-full flex flex-row flex-wrap justify-center items-center text-center gap-4 pb-8 md:pb-0 "
       >
         <FooterCategory header="Support">
           <a
-            class="hover:text-white hover:scale-110 transition-[127ms]"
+            class="hover:text-white hover:text-[22px] transition-[127ms]"
             href="/docs/">Documentation</a
           >
           <a
-            class="hover:text-white hover:scale-110 transition-[127ms]"
+            class="hover:text-white hover:text-[22px] transition-[127ms]"
             href="/donate/">Donations &hearts;</a
           >
         </FooterCategory>
         <FooterCategory header="Legal">
           <a
-            class="hover:text-white hover:scale-110 transition-[127ms]"
+            class="hover:text-white hover:text-[22px] transition-[127ms]"
             href="/legal/terms/">Terms of Service</a
           >
           <a
-            class="hover:text-white hover:scale-110 transition-[127ms]"
+            class="hover:text-white hover:text-[22px] transition-[127ms]"
             href="/legal/privacy/">Privacy Policy</a
           >
         </FooterCategory>

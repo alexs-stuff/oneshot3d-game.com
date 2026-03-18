@@ -5,6 +5,6 @@ const isActive = Astro.url.pathname === href || (href !== "/" && Astro.url.pathn
 ---
 
 <a href={href} class={`flex flex-col items-center justify-center
-    h-full w-24 text-center text-[24px] ${isActive ? "bg-white/20 hover:bg-white/30" : "hover:bg-white/15"}  transition-[127ms]`}>
+    h-full w-24 text-center text-[22px]  ${isActive ? "bg-white/20 text-[24px] hover:bg-white/30" : "hover:bg-white/15 hover:text-[24px]"}  transition-[127ms]`}>
     <span class="select-none">{buttonText}</span>
 </a>
