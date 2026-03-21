@@ -6,3 +6,5 @@ edition = "2024"
 [dependencies]
 tokio = {workspace = true}
 axum = {workspace = true}
+
+tracing = {workspace = true}

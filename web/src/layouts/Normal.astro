@@ -4,6 +4,8 @@ import wallpaperBg from "#assets/wallpaper.png";
 import { Image } from "astro:assets";
 import NavbarButton from "../components/navbar/NavbarButton.astro";
 import FooterCategory from "../components/footer/FooterCategory.astro";
+import Navbar from "../components/navbar/Navbar.astro";
+import Footer from "../components/footer/Footer.astro";
 
 const { className, noPadding } = Astro.props as {className: string, noPadding: boolean};
 ---
@@ -28,19 +30,11 @@ const { className, noPadding } = Astro.props as {className: string, noPadding: b
     <Image
       src={wallpaperBg}
       alt=""
-      class="fixed select-none inset-0 w-screen h-screen object-cover -z-10 blur-lg scale-110"
+      class="fixed select-none inset-0 w-screen h-screen object-cover -z-50 blur-lg scale-110"
     />
-    <div class="fixed inset-0 bg-black/30 -z-5"></div>
-    <nav
-      class="fixed w-full top-0 h-12.5 bg-black/35 text-white backdrop-blur-xl flex flex-row justify-between border-b-white/5 border-b z-100"
-    >
-      <div class="h-full w-auto flex flex-row">
-        <NavbarButton href="/" buttonText="Home" />
-        <NavbarButton href="/about" buttonText="About" />
-      </div>
-      <div></div>
-    </nav>
-    <div class={`flex flex-col ${noPadding ? "" : "pt-12.5"} justify-start items-center`}>
+    <div class="fixed inset-0 bg-black/30 -z-49"></div>
+    <Navbar/>
+    <div class={`flex flex-col ${noPadding ? "" : "pt-12"} justify-start items-center`}>
       <main
         class={`flex flex-col  text-white w-full min-h-screen h-auto ${className != null ? className : ""}`}
       >
@@ -48,44 +42,6 @@ const { className, noPadding } = Astro.props as {className: string, noPadding: b
       </main>
     </div>
 
-    <footer
-      class="relative bg-[#000000] w-full p-4 pb-2 text-white flex flex-col"
-    >
-      <div
-        class="w-full flex flex-row flex-wrap justify-center items-center text-center gap-4 pb-8 md:pb-0 "
-      >
-        <FooterCategory header="Support">
-          <a
-            class="hover:text-white hover:text-[22px] transition-[127ms]"
-            href="/docs/">Documentation</a
-          >
-          <a
-            class="hover:text-white hover:text-[22px] transition-[127ms]"
-            href="/donate/">Donations &hearts;</a
-          >
-        </FooterCategory>
-        <FooterCategory header="Legal">
-          <a
-            class="hover:text-white hover:text-[22px] transition-[127ms]"
-            href="/legal/terms/">Terms of Service</a
-          >
-          <a
-            class="hover:text-white hover:text-[22px] transition-[127ms]"
-            href="/legal/privacy/">Privacy Policy</a
-          >
-        </FooterCategory>
-      </div>
-
-      <div
-        class="w-full flex flex-col justify-center items-center gap-4 md:gap-0 md:flex-row md:justify-between md:items-end text-[18px] pt-8"
-      >
-        <span class="text-center md:text-left"
-          >Copyright &copy; Alex's Stuff 2025-{new Date().getFullYear()}</span
-        >
-        <span class="text-center md:text-right"
-          >Niko (OneShot), OneShot is property of Future Cat Games.<br /> All credits of their assets goes to them</span
-        >
-      </div>
-    </footer>
+    <Footer/>
   </body>
 </html>
