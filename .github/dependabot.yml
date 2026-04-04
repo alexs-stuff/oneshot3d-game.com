@@ -13,12 +13,3 @@ updates:
       all-bun:
         patterns:
           - "*"
-  
-  - package-ecosystem: "cargo" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-    groups:
-      all-cargo:
-        patterns:
-          - "*"

@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+}
+
+@theme {
+  --breakpoint-xss: 25rem;
+  --breakpoint-xs: 30rem;
+  --breakpoint-xls: 35rem;
+  --breakpoint-sl: 42.5rem;
+}
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-terminus: "Terminus", sans-serif;
+}

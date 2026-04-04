@@ -1,0 +1,31 @@
+---
+import kofiLogo from "#assets/icons/dnm_kofi.svg";
+import Image from "astro/components/Image.astro";
+
+export enum DonationMethodType {
+  Kofi,
+}
+
+const { type } = Astro.props as { type: DonationMethodType };
+
+function IconByType() {
+  switch (type) {
+    case DonationMethodType.Kofi:
+      return kofiLogo;
+  }
+}
+
+function UrlByType() {
+  switch (type) {
+    case DonationMethodType.Kofi:
+      return "https://ko-fi.com/al_ex427";
+  }
+}
+---
+
+<a
+  href={UrlByType()}
+  class="group flex h-14 w-14 flex-col items-center justify-center rounded-2xl bg-white transition-all duration-127 hover:scale-[1.05]"
+>
+  <Image class="scale-75 select-none" src={IconByType()} alt="" />
+</a>

@@ -1,0 +1,21 @@
+---
+import { changeLanguage } from "i18next";
+import Normal from "../layouts/Normal.astro";
+import DonationMethod, { DonationMethodType, } from "../components/buttons/DonationMethod.astro";
+
+changeLanguage("en");
+---
+
+<Normal className="gap-12 text-center">
+  <div>
+    <h1 class="text-4xl">Ever wanted to donate to the OneShot 3D project?</h1>
+    <span class="text-3xl">Well, you can!</span>
+  </div>
+
+  <section class="text-2xl" id="methods">
+    <span>You are able to donate via these methods:</span>
+    <div class="flex flex-row flex-wrap items-center justify-center">
+      <DonationMethod type={DonationMethodType.Kofi} />
+    </div>
+  </section>
+</Normal>

@@ -1,0 +1,39 @@
+---
+import FooterCategory from "./FooterCategory.astro";
+import {t} from "i18next";
+
+---
+
+<footer
+  class="font-inter relative flex w-full flex-col items-center justify-center gap-6 bg-[#000000] p-4 pb-4 text-white"
+>
+  <div class="items-between flex w-full flex-row justify-center">
+    <div
+      class="flex w-full flex-row flex-wrap items-center justify-center gap-4 pb-8 md:pb-0"
+    >
+      <FooterCategory header={t("footer.categories.support")} buttons={[
+        { text: t("footer.categories.support.documentation"), href: "/docs/" },
+        { text: t("footer.categories.support.donate"), href: "/donate/" }
+      ]}>
+      </FooterCategory>
+      <FooterCategory header={t("footer.categories.legal")} buttons={[
+        { text: t("footer.categories.legal.privacy"), href: "/legal/privacy/" },
+        { text: t("footer.categories.legal.terms"), href: "/legal/terms/" }
+      ]}>
+      </FooterCategory>
+    </div>
+  </div>
+
+  <div
+    class="xs:text-left xs:gap-0 flex  flex-col items-center justify-center gap-2 border-t
+    border-t-[#181818] pt-4 text-center text-[12px] text-[#7f7f7f] max-w-205 w-full"
+  >
+    <span class="w-full"
+      >Niko (OneShot), OneShot is property of Future Cat Games. All credits of
+      their assets goes to them</span
+    >
+    <span class="w-full"
+      >Copyright &copy; Alex's Stuff 2025-{new Date().getFullYear()}</span
+    >
+  </div>
+</footer>
