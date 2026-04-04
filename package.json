@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier . --write",
-    "genlang": "astro-i18next generate"
+    "genlang": "astro-i18next generate",
+    "upload": "bun scripts/cloudflare.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
