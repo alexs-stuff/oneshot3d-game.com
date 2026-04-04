@@ -29,7 +29,7 @@ const { className, noPadding } = Astro.props as {
       rel="stylesheet"
     />
     <link href="https://cdn.alex427.com/fonts/terminus.css" rel="stylesheet" />
-    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
 
         <HeadHrefLangs />
 
@@ -53,5 +53,14 @@ const { className, noPadding } = Astro.props as {
     </div>
 
     <Footer />
+    <script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    twemoji.parse(document.body, {
+      folder: 'svg',
+      ext: '.svg'
+    });
+  });
+</script>
   </body>
+  
 </html>
