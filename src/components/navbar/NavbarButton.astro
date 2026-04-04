@@ -1,19 +1,9 @@
 ---
 import { localizePath } from "astro-i18next";
 
-
 const { buttonText, href } = Astro.props;
-
-const isActive =
-  Astro.url.pathname === href ||
-  (href !== "/" && Astro.url.pathname.startsWith(href));
 ---
 
-<a
-  href={localizePath(href)}
-  class={`flex flex-col items-center justify-center
-    h-9 px-4 text-center text-[22px]  rounded-lg hover:bg-white/15}  transition-[127ms]`}
->
-  <span class={`select-none ${isActive ? "underline" : ""}`}>{buttonText}</span>
+<a data-nav-href={href} href={localizePath(href)} class="relative flex flex-col items-center justify-center h-9 px-4 text-center text-[24px] rounded-lg hover:bg-white/15 transition-all duration-[127ms]">
+  <span class="select-none">{buttonText}</span>
 </a>
-
