@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier . --write",
-    "genlang": "astro-i18next generate",
+    "genlang": "bunx astro-i18next generate",
     "upload": "bun scripts/cloudflare.mjs"
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.9",
-    "astro-i18next": "^1.0.0-beta.21",
+    "astro-i18next": "github:QuiltMC/astro-i18next#da5ff6e",
     "axios": "^1.13.2",
     "eslint-plugin-astro": "^1.6.0",
     "marked": "^17.0.3",

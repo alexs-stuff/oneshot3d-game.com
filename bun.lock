@@ -9,7 +9,7 @@
         "@fontsource/inter": "^5.2.8",
         "@tailwindcss/vite": "^4.1.18",
         "astro": "^5.16.9",
-        "astro-i18next": "^1.0.0-beta.21",
+        "astro-i18next": "github:QuiltMC/astro-i18next#da5ff6e",
         "axios": "^1.13.2",
         "eslint-plugin-astro": "^1.6.0",
         "marked": "^17.0.3",
@@ -368,7 +368,7 @@
 
     "astro-eslint-parser": ["astro-eslint-parser@1.4.0", "", { "dependencies": { "@astrojs/compiler": "^2.0.0 || ^3.0.0", "@typescript-eslint/scope-manager": "^7.0.0 || ^8.0.0", "@typescript-eslint/types": "^7.0.0 || ^8.0.0", "astrojs-compiler-sync": "^1.0.0", "debug": "^4.3.4", "entities": "^7.0.0", "eslint-scope": "^8.0.1", "eslint-visitor-keys": "^4.0.0", "espree": "^10.0.0", "fast-glob": "^3.3.3", "is-glob": "^4.0.3", "semver": "^7.3.8" } }, "sha512-+QDcgc7e+au6EZ0YjMmRRjNoQo5bDMlaR45aWDoFsuxQTCM9qmCHRoiKJPELgckJ8Wmr7vcfpa9eCDHBFh6G4w=="],
 
-    "astro-i18next": ["astro-i18next@1.0.0-beta.21", "", { "dependencies": { "@proload/core": "^0.3.3", "@proload/plugin-tsm": "^0.2.1", "i18next": "^22.4.10", "i18next-browser-languagedetector": "^7.0.1", "i18next-fs-backend": "^2.1.1", "i18next-http-backend": "^2.1.1", "iso-639-1": "^2.1.15", "locale-emoji": "^0.3.0", "pathe": "^1.1.0" }, "peerDependencies": { "astro": ">=1.0.0" }, "bin": { "astro-i18next": "dist/cli/index.js" } }, "sha512-1YPqwexumHpK/d9afEoi52CBFTu6k4MYv/oHjsaAasZDvFClU6U5VPttC/OgZcXRYggCM6ee2LOnyHqlmXOeLA=="],
+    "astro-i18next": ["astro-i18next@github:QuiltMC/astro-i18next#da5ff6e", { "dependencies": { "@proload/core": "^0.3.3", "@proload/plugin-tsm": "^0.2.1", "i18next-browser-languagedetector": "^7.0.1", "i18next-fs-backend": "^2.1.1", "i18next-http-backend": "^2.1.1", "iso-639-1": "^2.1.15", "locale-emoji": "^0.3.0", "pathe": "^1.1.0" }, "peerDependencies": { "astro": ">=1.0.0", "i18next": ">=22.4.0" }, "bin": { "astro-i18next": "./dist/cli/index.js" } }, "QuiltMC-astro-i18next-da5ff6e", "sha512-I/5uWD/sO/x+NQChfWPG3eqp30zzYTWeJGBXmei69IQ1xc7bQlb4svk7T9XKPqDoaN/kT/S5A6Af1LIa8yHY2Q=="],
 
     "astrojs-compiler-sync": ["astrojs-compiler-sync@1.1.1", "", { "dependencies": { "synckit": "^0.11.0" }, "peerDependencies": { "@astrojs/compiler": ">=0.27.0" } }, "sha512-0mKvB9sDQRIZPsEJadw6OaFbGJ92cJPPR++ICca9XEyiUAZqgVuk25jNmzHPT0KF80rI94trSZrUR5iHFXGGOQ=="],
 
@@ -670,7 +670,7 @@
 
     "http-errors": ["http-errors@2.0.1", "", { "dependencies": { "depd": "~2.0.0", "inherits": "~2.0.4", "setprototypeof": "~1.2.0", "statuses": "~2.0.2", "toidentifier": "~1.0.1" } }, "sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ=="],
 
-    "i18next": ["i18next@22.5.1", "", { "dependencies": { "@babel/runtime": "^7.20.6" } }, "sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA=="],
+    "i18next": ["i18next@26.0.3", "", { "dependencies": { "@babel/runtime": "^7.29.2" }, "peerDependencies": { "typescript": "^5 || ^6" }, "optionalPeers": ["typescript"] }, "sha512-1571kXINxHKY7LksWp8wP+zP0YqHSSpl/OW0Y0owFEf2H3s8gCAffWaZivcz14rMkOvn3R/psiQxVsR9t2Nafg=="],
 
     "i18next-browser-languagedetector": ["i18next-browser-languagedetector@7.2.2", "", { "dependencies": { "@babel/runtime": "^7.23.2" } }, "sha512-6b7r75uIJDWCcCflmbof+sJ94k9UQO4X0YR62oUfqGI/GjCLVzlCwu8TFdRZIqVLzWbzNcmkmhfqKEr4TLz4HQ=="],
 

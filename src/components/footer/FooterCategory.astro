@@ -1,21 +1,31 @@
 ---
-const { header, buttons } = Astro.props as { header: string, buttons?: FooterCategoryButton[] };
+const { header, buttons } = Astro.props as {
+  header: string;
+  buttons?: FooterCategoryButton[];
+};
 
 export type FooterCategoryButton = {
   text: string;
   href: string;
-}
+};
 ---
 
 <div
-  class="flex h-auto w-auto min-w-46.5 min-h-20 flex-col items-center text-[20px] text-[#b3b3b3] xs:text-left text-center"
+  class="xs:text-left flex h-auto min-h-20 w-auto min-w-46.5 flex-col items-center text-center text-[20px] text-[#b3b3b3]"
 >
-  <span class="w-full text-[18px] font-bold tracking-wider text-white">{header.toUpperCase()}</span>
-  <div class="w-full flex flex-col items-center justify-end gap-1">
-    {buttons?.map((button) => (
-      <a
-        class="transition-[127ms]  hover:text-white w-full "
-        href={button.href}>{button.text}</a>
-    ))}
+  <span class="w-full text-[18px] font-bold tracking-wider text-white"
+    >{header.toUpperCase()}</span
+  >
+  <div class="flex w-full flex-col items-center justify-end gap-1">
+    {
+      buttons?.map((button) => (
+        <a
+          class="w-full transition-[127ms] hover:text-white"
+          href={button.href}
+        >
+          {button.text}
+        </a>
+      ))
+    }
   </div>
 </div>

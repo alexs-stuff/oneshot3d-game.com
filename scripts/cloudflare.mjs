@@ -63,7 +63,7 @@ for (const file of files) {
   console.log(`  ${rel} -> ${key} (${mime})`);
   execSync(
     `npx wrangler r2 object put "${BUCKET_NAME}/${key}" --file="${file}" --content-type="${mime}"`,
-    { stdio: "inherit" }
+    { stdio: "inherit" },
   );
 }
 

@@ -1,7 +1,6 @@
 ---
 import FooterCategory from "./FooterCategory.astro";
-import {t} from "i18next";
-
+import { t } from "i18next";
 ---
 
 <footer
@@ -11,22 +10,31 @@ import {t} from "i18next";
     <div
       class="flex w-full flex-row flex-wrap items-center justify-center gap-4 pb-8 md:pb-0"
     >
-      <FooterCategory header={t("footer.categories.support")} buttons={[
-        { text: t("footer.categories.support.documentation"), href: "/docs/" },
-        { text: t("footer.categories.support.donate"), href: "/donate/" }
-      ]}>
-      </FooterCategory>
-      <FooterCategory header={t("footer.categories.legal")} buttons={[
-        { text: t("footer.categories.legal.privacy"), href: "/legal/privacy/" },
-        { text: t("footer.categories.legal.terms"), href: "/legal/terms/" }
-      ]}>
-      </FooterCategory>
+      <FooterCategory
+        header={t("footer.categories.support")}
+        buttons={[
+          {
+            text: t("footer.categories.support.documentation"),
+            href: "/docs/",
+          },
+          { text: t("footer.categories.support.donate"), href: "/donate/" },
+        ]}
+      />
+      <FooterCategory
+        header={t("footer.categories.legal")}
+        buttons={[
+          {
+            text: t("footer.categories.legal.privacy"),
+            href: "/legal/privacy/",
+          },
+          { text: t("footer.categories.legal.terms"), href: "/legal/terms/" },
+        ]}
+      />
     </div>
   </div>
 
   <div
-    class="xs:text-left xs:gap-0 flex  flex-col items-center justify-center gap-2 border-t
-    border-t-[#181818] pt-4 text-center text-[12px] text-[#7f7f7f] max-w-205 w-full"
+    class="xs:text-left xs:gap-0 flex w-full max-w-205 flex-col items-center justify-center gap-2 border-t border-t-[#181818] pt-4 text-center text-[12px] text-[#7f7f7f]"
   >
     <span class="w-full"
       >Niko (OneShot), OneShot is property of Future Cat Games. All credits of

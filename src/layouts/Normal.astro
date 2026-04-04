@@ -8,7 +8,6 @@ import i18next from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import { ClientRouter } from "astro:transitions";
 
-
 const { className, noPadding } = Astro.props as {
   className: string;
   noPadding: boolean;
@@ -20,11 +19,11 @@ const { className, noPadding } = Astro.props as {
   <head>
     <ClientRouter />
     <style is:global>
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
-</style>
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OneShot 3D</title>
@@ -37,10 +36,12 @@ const { className, noPadding } = Astro.props as {
       rel="stylesheet"
     />
     <link href="https://cdn.alex427.com/fonts/terminus.css" rel="stylesheet" />
-    <script is:inline src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
+      crossorigin="anonymous"></script>
 
-        <HeadHrefLangs />
-
+    <HeadHrefLangs />
   </head>
   <body class="h-auto min-h-dvh w-full overflow-x-hidden bg-black">
     <Image
@@ -62,13 +63,12 @@ const { className, noPadding } = Astro.props as {
 
     <Footer />
     <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    twemoji.parse(document.body, {
-      folder: 'svg',
-      ext: '.svg'
-    });
-  });
-</script>
+      document.addEventListener("DOMContentLoaded", () => {
+        twemoji.parse(document.body, {
+          folder: "svg",
+          ext: ".svg",
+        });
+      });
+    </script>
   </body>
-  
 </html>
