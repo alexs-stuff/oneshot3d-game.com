@@ -3,7 +3,9 @@ import tailwindcss from "@tailwindcss/vite";
 import node from "@astrojs/node";
 
 import { defineConfig } from "astro/config";
-//import astroI18next from "astro-i18next";
+import astroI18next from "astro-i18next";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +22,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
- // integrations: [astroI18next()],
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "ro", "ru"],
+  },
+  integrations: [astroI18next(), icon()],
   redirects: {
     "/play/game": "/game",
     "/game/play": "/game",

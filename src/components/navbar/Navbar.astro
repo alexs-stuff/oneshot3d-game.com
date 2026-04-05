@@ -4,25 +4,21 @@ import { t } from "i18next";
 ---
 
 <nav
-  class="font-terminus fixed top-0 z-100 flex min-h-12 w-full flex-col bg-black/35 text-white backdrop-blur-xl"
->
+  class="font-terminus fixed top-0 z-100 flex min-h-12 w-full flex-col bg-black/35 text-white backdrop-blur-xl">
   <div
-    class="flex h-full w-full flex-row items-center justify-between border-b border-b-white/5 p-1"
-  >
+    class="flex h-full w-full flex-row items-center justify-between border-b border-b-white/5 p-1">
     <div class="relative flex h-full w-auto flex-row items-center gap-2 p-0.5">
       <NavbarButton href="/" buttonText={t("navb.home")} />
       <NavbarButton href="/about" buttonText={t("navb.about")} />
       <div
         id="nav-indicator"
-        class="absolute bottom-1 h-px bg-white transition-all duration-300 ease-in-out"
-      >
+        class="absolute bottom-1 h-px bg-white transition-all duration-300 ease-in-out">
       </div>
     </div>
     <div></div>
   </div>
   <div
-    class="xss:h-12 xss:text-[20px] flex hidden h-8 w-full flex-row items-center justify-center border-b border-b-white/5 text-[16px]"
-  >
+    class="xss:h-12 xss:text-[20px] flex hidden h-8 w-full flex-row items-center justify-center border-b border-b-white/5 text-[16px]">
     <span>Releasing in <b>N/A</b></span>
   </div>
 

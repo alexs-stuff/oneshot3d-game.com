@@ -1,1 +1,1 @@
-declare module 'astro-i18next';
+declare module "astro-i18next";

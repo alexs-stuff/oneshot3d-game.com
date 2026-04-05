@@ -1,47 +1,91 @@
 ---
 import FooterCategory from "./FooterCategory.astro";
 import { t } from "i18next";
+import FooterSocialIcon from "./FooterSocialIcon.astro";
+import { Trans, LanguageSelector } from "astro-i18next/components";
 ---
 
 <footer
-  class="font-inter relative flex w-full flex-col items-center justify-center gap-6 bg-[#000000] p-4 pb-4 text-white"
->
-  <div class="items-between flex w-full flex-row justify-center">
-    <div
-      class="flex w-full flex-row flex-wrap items-center justify-center gap-4 pb-8 md:pb-0"
-    >
-      <FooterCategory
-        header={t("footer.categories.support")}
-        buttons={[
-          {
-            text: t("footer.categories.support.documentation"),
-            href: "/docs/",
-          },
-          { text: t("footer.categories.support.donate"), href: "/donate/" },
-        ]}
-      />
-      <FooterCategory
-        header={t("footer.categories.legal")}
-        buttons={[
-          {
-            text: t("footer.categories.legal.privacy"),
-            href: "/legal/privacy/",
-          },
-          { text: t("footer.categories.legal.terms"), href: "/legal/terms/" },
-        ]}
-      />
-    </div>
-  </div>
-
+  class="font-inter relative flex w-full flex-col items-center justify-center bg-[#000000] p-6 pb-4 text-white">
   <div
-    class="xs:text-left xs:gap-0 flex w-full max-w-205 flex-col items-center justify-center gap-2 border-t border-t-[#181818] pt-4 text-center text-[12px] text-[#7f7f7f]"
-  >
-    <span class="w-full"
-      >Niko (OneShot), OneShot is property of Future Cat Games. All credits of
-      their assets goes to them</span
-    >
-    <span class="w-full"
-      >Copyright &copy; Alex's Stuff 2025-{new Date().getFullYear()}</span
-    >
+    class="flex h-auto w-full max-w-5xl flex-col items-center justify-center gap-6">
+    <div class="flex w-full flex-row justify-center">
+      <div
+        class="items-between xs:flex-row flex w-full flex-col justify-center">
+        <div
+          class="xs:order-1 xs:w-[25%] xs:items-start xs:mt-0 order-2 mt-4 flex w-full flex-col items-center">
+          <h1 class="xs:text-left w-full text-center text-2xl">OneShot 3D</h1>
+          <div
+            class="xs:justify-start flex w-full flex-row items-center justify-center">
+            <FooterSocialIcon
+              href="https://discord.gg/E8DnA6ZjJP"
+              icon="fa6-brands:discord"
+            />
+            <FooterSocialIcon
+              href="https://t.me/oneshot3d"
+              icon="fa6-brands:telegram"
+            />
+            <FooterSocialIcon
+              href="https://tiktok.com/@al_ex427"
+              icon="fa6-brands:tiktok"
+            />
+          </div>
+        </div>
+        <div
+          class="xs:order-2 xs:w-auto xs:justify-start order-1 flex w-full flex-row flex-wrap items-center justify-center gap-4 pb-8 md:pb-0">
+          <FooterCategory
+            header={t("footer.categories.support")}
+            buttons={[
+              {
+                text: t("footer.categories.support.documentation"),
+                href: "/docs/",
+              },
+              { text: t("footer.categories.support.donate"), href: "/donate/" },
+            ]}
+          />
+          <FooterCategory
+            header={t("footer.categories.legal")}
+            buttons={[
+              {
+                text: t("footer.categories.legal.privacy"),
+                href: "/legal/privacy/",
+              },
+              {
+                text: t("footer.categories.legal.terms"),
+                href: "/legal/terms/",
+              },
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="md:text-left xs:gap-0 flex w-full flex-col md:flex-row items-center justify-between gap-2 border-t border-t-[#181818] pt-4 text-center text-[12px] text-[#7f7f7f] px-8">
+      <div class="flex flex-col w-full">
+      <span class="w-full">
+        <Trans i18nKey="footer.disclaimer">
+          OneShot is property of <strong>Future Cat Games LLC</strong>, and is
+          no way involved with OneShot 3D, Alex's Stuff
+        </Trans>
+      </span>
+      <span class="w-full">Copyright &copy; Alex's Stuff 2025-{new Date().getFullYear()}</span>
+      </div>
+
+      <LanguageSelector class="border border-[#181818] py-2 px-2 w-52 rounded-lg">
+        <style>
+          select {
+            background-color: black;
+            outline: 1px solid #181818;
+            border-radius: 8px;
+            
+          }
+          select:has(option:checked) {
+            color:white;
+          }
+        </style>
+      </LanguageSelector>
+    </div>
+
   </div>
 </footer>

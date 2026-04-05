@@ -10,3 +10,6 @@ bun run prepack
 echo ":: astro-i18next $(bunx astro-i18next --version)"
 
 cd ../../
+
+bun run genlang
+

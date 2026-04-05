@@ -1,4 +1,7 @@
 ---
+import i18next from "i18next";
+import { localizePath } from "astro-i18next";
+
 const { header, buttons } = Astro.props as {
   header: string;
   buttons?: FooterCategoryButton[];
@@ -11,8 +14,7 @@ export type FooterCategoryButton = {
 ---
 
 <div
-  class="xs:text-left flex h-auto min-h-20 w-auto min-w-46.5 flex-col items-center text-center text-[20px] text-[#b3b3b3]"
->
+  class="xs:text-left flex h-auto min-h-20 w-auto min-w-46.5 flex-col items-center text-center text-[20px] text-[#b3b3b3]">
   <span class="w-full text-[18px] font-bold tracking-wider text-white"
     >{header.toUpperCase()}</span
   >
@@ -21,8 +23,7 @@ export type FooterCategoryButton = {
       buttons?.map((button) => (
         <a
           class="w-full transition-[127ms] hover:text-white"
-          href={button.href}
-        >
+          href={localizePath(button.href, i18next.language)}>
           {button.text}
         </a>
       ))

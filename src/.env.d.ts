@@ -7,6 +7,6 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-declare module 'astro-i18next' {
-  export * from 'astro-i18next/dist/types/index';
+declare module "astro-i18next" {
+  export * from "astro-i18next/dist/types/index";
 }

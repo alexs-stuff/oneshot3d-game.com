@@ -1,18 +1,20 @@
+//yes this is skidded, i dont give a fuck
 import { execSync } from "child_process";
 import { readdirSync, statSync } from "fs";
 import { join, relative, extname } from "path";
 
-const BUCKET_NAME = process.env.R2_BUCKET || "your-r2-bucket-name";
-const ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
+const BUCKET_NAME = process.env.R2_BUCKET || "cdn-alex427com";
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
+const TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const ASSETS_DIR = "dist/client/oneshot3d-game.com";
 const R2_PREFIX = "static/oneshot3d-game.com";
 
-if (!process.env.CLOUDFLARE_API_TOKEN) {
+if (!TOKEN) {
   console.error("missing CLOUDFLARE_API_TOKEN");
   process.exit(1);
 }
 if (!ACCOUNT_ID) {
-  console.error("missing CF_ACCOUNT_ID");
+  console.error("missing CLOUDFLARE_ACCOUNT_ID");
   process.exit(1);
 }
 
@@ -53,7 +55,10 @@ function getAllFiles(dir) {
 }
 
 const files = getAllFiles(ASSETS_DIR);
-console.log(`uploading ${files.length} files to R2...\n`);
+console.log(`\nuploading ${files.length} files to R2...\n`);
+
+let failed = 0;
+let success = 0;
 
 for (const file of files) {
   const rel = relative(ASSETS_DIR, file);
@@ -61,10 +66,20 @@ for (const file of files) {
   const mime = MIME_MAP[extname(file)] || "application/octet-stream";
 
   console.log(`  ${rel} -> ${key} (${mime})`);
-  execSync(
-    `npx wrangler r2 object put "${BUCKET_NAME}/${key}" --file="${file}" --content-type="${mime}"`,
-    { stdio: "inherit" },
-  );
+  try {
+    const output = execSync(
+      `bunx wrangler r2 object put "${BUCKET_NAME}/${key}" --file="${file}" --content-type="${mime}" --remote`,
+      { encoding: "utf-8" },
+    );
+    console.log(output);
+    success++;
+  } catch (e) {
+    console.error(
+      `  ✗ failed: ${e.stdout?.toString() || ""} ${e.stderr?.toString() || e.message}`,
+    );
+    failed++;
+  }
 }
 
-console.log("\ndone");
+console.log(`\ndone: ${success} uploaded, ${failed} failed`);
+if (failed > 0) process.exit(1);

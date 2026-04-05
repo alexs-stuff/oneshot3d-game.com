@@ -1,0 +1,12 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const { icon, href } = Astro.props as {
+  icon: string;
+  href: string;
+};
+---
+
+<a class="group w-12 h-12 xs:w-8 xs:h-8 flex justify-center items-center flex-col" href={href}>
+  <Icon name={icon} class="text-white/75 scale-175 group:hover:scale-200 xs:scale-125 xs:group-hover:scale-150 group-hover:text-white transition-[127ms]" />
+</a>
