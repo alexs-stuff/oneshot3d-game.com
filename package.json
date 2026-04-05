@@ -12,7 +12,7 @@
     "upload": "bun scripts/cloudflare.mjs"
   },
   "dependencies": {
-    "@astrojs/node": "^9.5.1",
+    "@astrojs/node": "^10.0.0",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.9",
