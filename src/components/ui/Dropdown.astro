@@ -1,0 +1,180 @@
+---
+import { Icon } from "astro-icon/components";
+import DropdownButton from "./DropdownButton.astro";
+
+export type DropdownOption = {
+  key: string;
+  label: string;
+  disabled?: boolean;
+};
+
+interface Props {
+  options: DropdownOption[];
+  name?: string;
+  placeholder?: string;
+  defaultValue?: string;
+  onSelect?: string;
+  class?: string;
+}
+
+const {
+  options,
+  name,
+  placeholder = "Select",
+  defaultValue,
+  onSelect,
+  class: className,
+} = Astro.props;
+
+const selected = options?.find((o) => o.key === defaultValue);
+---
+
+<div class="relative inline-block" data-dropdown data-on-select={onSelect}>
+  <DropdownButton class={className ?? ""} label={selected?.label || placeholder}>
+    <Icon
+      class="text-xl duration-[127ms]"
+      name="fa7-solid:angle-down"
+    />
+  </DropdownButton>
+
+  <template class="dropdown-template">
+    <div
+      class="dropdown-menu p-1 m-0 bg-os-primary-bg border border-[#181818] rounded-xl max-h-128 overflow-y-auto z-50 flex flex-col gap-1"
+    >
+      {options.map((opt) => (
+        <DropdownButton
+          data-value={opt.key}
+          label={opt.label}
+          isDisabled={opt.disabled}
+          class={`w-full text-left ${opt.key === defaultValue ? "bg-os-primary-bg-hi" : ""}`}
+        />
+      ))}
+    </div>
+  </template>
+
+  <input type="hidden" name={name} value={defaultValue || ""} class="dropdown-value" />
+</div>
+
+<style>
+  [data-dropdown][data-open] .chevron { transform: rotate(180deg); }
+  .dropdown-menu {
+    opacity: 0; 
+    pointer-events: none; 
+    transform: translateX(0);
+    transition: opacity 127ms;
+  }
+  .dropdown-menu.menu-open {
+    opacity: 1; 
+    pointer-events: auto; 
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-dropdown]").forEach((dropdown) => {
+    const trigger = dropdown.querySelector<HTMLButtonElement>("button")!;
+    const display = trigger.querySelector<HTMLSpanElement>(".dropdown-display")!;
+    const hidden = dropdown.querySelector<HTMLInputElement>(".dropdown-value")!;
+    const tmpl = dropdown.querySelector<HTMLTemplateElement>(".dropdown-template")!;
+
+    let menu: HTMLDivElement | null = null;
+    let selectedValue = hidden.value;
+
+    function buildMenu() {
+      const clone = tmpl.content.cloneNode(true) as DocumentFragment;
+      menu = clone.querySelector<HTMLDivElement>(".dropdown-menu")!;
+
+      if (selectedValue) {
+        menu.querySelectorAll<HTMLButtonElement>("button").forEach((item) => {
+          const match = item.dataset.value === selectedValue;
+          item.classList.toggle("bg-os-primary-bg-hi", match);
+        });
+      }
+
+      menu.style.cssText = "opacity:0;pointer-events:none;display:block;position:fixed;left:-9999px";
+      document.body.appendChild(menu);
+      const menuHeight = menu.scrollHeight;
+
+      const rect = trigger.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const flip = spaceBelow < menuHeight + 10 && rect.top > spaceBelow;
+
+      menu.style.cssText = `
+        position: fixed;
+        left: ${rect.left}px;
+        width: ${rect.width}px;
+        ${flip
+          ? `bottom: ${window.innerHeight - rect.top + 6}px; top: auto;`
+          : `top: ${rect.bottom + 6}px; bottom: auto;`
+        }
+      `;
+
+      requestAnimationFrame(() => menu?.classList.add("menu-open"));
+
+      menu.querySelectorAll<HTMLButtonElement>("button:not(:disabled)").forEach((item) => {
+        item.addEventListener("click", () => select(item));
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(item); }
+          if (e.key === "Escape") { close(); trigger.focus(); }
+          if (e.key === "ArrowDown") { e.preventDefault(); (item.nextElementSibling as HTMLButtonElement)?.focus(); }
+          if (e.key === "ArrowUp") { e.preventDefault(); (item.previousElementSibling as HTMLButtonElement)?.focus(); }
+        });
+      });
+    }
+
+    function destroyMenu() {
+      menu?.remove();
+      menu = null;
+    }
+
+    function open() {
+      buildMenu();
+      dropdown.setAttribute("data-open", "");
+      trigger.setAttribute("aria-expanded", "true");
+    }
+
+    function close() {
+      if (!menu) return;
+      menu.classList.remove("menu-open");
+      menu.addEventListener("transitionend", () => destroyMenu(), { once: true });
+      setTimeout(() => destroyMenu(), 200);
+      dropdown.removeAttribute("data-open");
+      trigger.setAttribute("aria-expanded", "false");
+    }
+
+    function isOpen() { return menu !== null; }
+
+    function select(item: HTMLButtonElement) {
+      selectedValue = item.dataset.value || "";
+      display.textContent = item.textContent;
+      hidden.value = selectedValue;
+
+      const fn = dropdown.dataset.onSelect;
+      if (fn) new Function("value", "label", fn).call(window, selectedValue, item.textContent?.trim() || "");
+
+      close();
+      
+      trigger.focus();
+    }
+
+    trigger.addEventListener("click", () => (isOpen() ? close() : open()));
+
+    trigger.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (!isOpen()) open();
+        requestAnimationFrame(() =>
+          menu?.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus()
+        );
+      }
+      if (e.key === "Escape") close();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target as Node) && !menu?.contains(e.target as Node)) close();
+    });
+
+    window.addEventListener("scroll", () => { if (isOpen()) close(); }, { passive: true });
+    window.addEventListener("resize", () => { if (isOpen()) close(); }, { passive: true });
+  });
+</script>

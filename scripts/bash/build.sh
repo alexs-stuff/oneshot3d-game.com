@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build --secret id=env,src=.env  . -t alexs-stuff/os3d-web

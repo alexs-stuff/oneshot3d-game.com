@@ -13,6 +13,16 @@
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@theme {
+  --color-os-primary-bg: #000;
+  --color-os-primary-bg-hi: #ffffff15;
+  --color-os-primary-fg: #fff;
 }
 
 @theme {

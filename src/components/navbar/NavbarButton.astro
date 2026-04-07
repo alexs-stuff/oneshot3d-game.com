@@ -9,6 +9,6 @@ const { buttonText, href } = Astro.props;
 <a
   data-nav-href={href}
   href={localizePath(href, i18next.language)}
-  class="relative flex h-9 flex-col items-center justify-center rounded-lg px-4 text-center text-[20px] transition-all duration-[127ms] hover:bg-white/15">
+  class="hover:bg-os-primary-bg-hi relative flex h-9 flex-col items-center justify-center rounded-lg px-4 text-center text-[20px] transition-all duration-[127ms]">
   <span class="select-none">{buttonText}</span>
 </a>

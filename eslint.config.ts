@@ -12,5 +12,5 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.recommended,
-  eslintPluginAstro.configs.recommended,
+  eslintPluginAstro.configs.recommended
 ]);

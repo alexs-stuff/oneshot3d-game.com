@@ -1,4 +1,7 @@
 {
+  "pages.notfound": "There's nothing here!",
+  "pages.notfound.back": "Go back",
+
   "navb.home": "Home",
   "navb.about": "About",
 
@@ -11,5 +14,4 @@
   "footer.categories.legal.privacy": "Privacy Policy",
 
   "footer.disclaimer": "OneShot is property of <0>Future Cat Games LLC</0>, and is no way involved with OneShot 3D, Alex's Stuff"
-
 }

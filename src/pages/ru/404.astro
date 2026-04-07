@@ -1,11 +1,13 @@
 ---
-import { changeLanguage } from "i18next";
 import Normal from "../../layouts/Normal.astro";
+import { t, changeLanguage } from "i18next";
 
 changeLanguage("ru");
 ---
 
 <Normal noPadding={true} className="items-center justify-center text-center">
   <h1 class="text-6xl">404</h1>
-  <span class="text-2xl">"There's nothing here!"</span>
+  <span class="text-2xl">{t("pages.notfound")}</span>
+  <p class="mt-4 text-lg">{t("pages.notfound.back")}</p>
 </Normal>
+<script is:inline></script>

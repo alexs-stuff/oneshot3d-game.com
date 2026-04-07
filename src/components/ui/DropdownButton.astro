@@ -1,0 +1,20 @@
+---
+const { label, isDisabled, class: className, ...rest } = Astro.props as {
+  label: string;
+  isDisabled?: boolean;
+  class: string;
+  [key: string]: any;
+};
+
+
+
+
+---
+<button
+  type="button"
+  class={`bg-os-primary-bg hover:bg-os-primary-bg-hi flex items-center justify-between rounded-xl px-3 py-2 duration-[127ms] font-inter text-[14px] ${className}`}
+  disabled={isDisabled}
+  {...rest}>
+  <span class="dropdown-display text-os-primary-fg">{label}</span>
+  <slot/>
+</button>
