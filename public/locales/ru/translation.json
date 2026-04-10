@@ -1,17 +1,13 @@
 {
   "pages.notfound": "Тут ничего нет!",
   "pages.notfound.back": "Вернутся",
-
   "navb.home": "Главная",
   "navb.about": "О нас",
-
   "footer.categories.support": "Поддержка",
   "footer.categories.support.documentation": "Документация",
   "footer.categories.support.donate": "Пожертвование ❤️",
-
   "footer.categories.legal": "Юридическая информация",
   "footer.categories.legal.terms": "Условия пользования",
   "footer.categories.legal.privacy": "Политика конфидециальности",
-
   "footer.disclaimer": "OneShot является собственностью <0>Future Cat Games LLC</0> и никоим образом не связан с OneShot 3D, Alex's Stuff <1>Русский перевод: @kolyainc</1>"
 }
