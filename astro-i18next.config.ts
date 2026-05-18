@@ -1,1 +1,0 @@
-export { default } from "./astro-i18next.config.mjs.old";
