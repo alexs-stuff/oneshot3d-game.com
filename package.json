@@ -12,25 +12,29 @@
     "upload": "bun scripts/cloudflare.mjs"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.8.8",
+    "@formatjs/intl-localematcher": "^0.8.9",
+    "@iconify-react/fa7-brands": "^1.0.2",
+    "@iconify/react": "^6.0.2",
+    "axios": "^1.17.0",
     "negotiator": "^1.0.0",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/negotiator": "^0.6.4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^20.19.41",
+    "@types/react": "^19.2.16",
+    "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
+    "eslint": "^9.39.4",
     "eslint-config-next": "16.2.6",
-    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-prettier": "^5.5.6",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.9.3"
   },
   "ignoreScripts": [
     "sharp",

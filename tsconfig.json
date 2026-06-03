@@ -20,7 +20,9 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "#locales/*": ["./locales/*"]
+      "#locales/*": ["./locales/*"],
+      "#assets/*": ["./src/assets/*"],
+      "#hooks/*": ["./src/hooks/*"]
     }
   },
   "include": [
@@ -31,6 +33,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  
+
   "exclude": ["node_modules"]
 }

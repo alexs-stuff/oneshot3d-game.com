@@ -1,15 +1,87 @@
 @import "tailwindcss";
 
-@layer base {
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+@font-face {
+  font-family: "Terminus";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://cdn.alex427.com/fonts/static/terminus.woff2")
+    format("woff2");
 }
 
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  img {
+    user-select: none;
+    -moz-user-select: none;
+  }
+
+  a {
+    text-decoration:underline;
+  }
+}
+
+:root {
+  --navbar-margin: 12px;
+  --navbar-height: 48px;
+}
 
 @theme {
-    --color-primary-bg: rgba(0,0,0,0.7);
-    --color-primary-fg: #fff;
+  --color-primary-bg: rgba(0, 0, 0, 0.55);
+  --color-primary-bg-hover: color-mix(in srgb, var(--color-primary-bg) 85%, white);
+
+  --color-primary-bg-outline: rgba(255, 255, 255, 0.2);
+  --color-primary-fg: #fff;
+
+  --color-secondary-bg: rgba(255,255,255, 0.55);
+  --color-secondary-fg: rgba(255,255,255,0.6);
+
+  --color-placeholder-primary: rgba(255,255,255,0.1)
 }
+
+@theme {
+  --animate-size: size 0.933s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+}
+@theme {
+  --blur-primary: 24px;
+  --blur-secondary: 16px;
+  --blur-primary-scaled: calc(var(--blur-primary) / var(--page-zoom-internal));
+  --blur-secondary-scaled: calc(var(--blur-secondary) / var(--page-zoom-internal));
+
+  --transition-primary: 225ms;
+
+  --rounded-primary: 24px;
+  --rounded-secondary: 16px;
+  --rounded-primary-small: calc(var(--rounded-primary) / 2);
+}
+
+@theme {
+  --text-header: 32px;
+  --text-heading: 28px;
+  --text-title: 24px;
+  --text-normal: 18px;
+}
+@theme {
+  --font-terminus: "Terminus", monospace;
+}
+
+
+@keyframes size {
+  0% {
+    scale: 100%;
+  }
+
+  50% {
+    scale: 110%;
+  }
+
+  100% {
+    scale: 100%;
+  }
+}
+
+/* scrollbar type shit */
