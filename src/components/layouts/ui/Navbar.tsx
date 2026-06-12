@@ -1,16 +1,20 @@
-import Image from "next/image";
+
 
 import ProfileCard from "@/components/cards/ProfileCard";
 import Logo from "@/components/Logo";
+import Link from "next/link";
 export default function Navbar() {
   return (
-    <nav className="fixed flex h-auto w-full flex-col items-center justify-center p-(--navbar-margin) z-100">
-      <div className="bg-primary-bg h-(--navbar-height) outline-primary-bg-outline w-full rounded-(--rounded-secondary) outline flex flex-row p-1 justify-between items-center
-      backdrop-blur-primary-scaled">
-        <div className="justify-center items-center flex-row flex p-1 w-auto h-full">
-            <Logo size="small" scale={0.0175}/>
+    <nav className="fixed z-100 flex h-auto w-full flex-col items-center justify-center p-(--navbar-margin)">
+      <div className="bg-primary-bg outline-primary-bg-outline backdrop-blur-primary-scaled flex h-(--navbar-height) w-full flex-row items-center justify-between rounded-(--rounded-secondary) p-1 outline">
+        <div className="flex h-full w-auto flex-row items-center justify-center">
+         
+         <Link href="/" className="hover:bg-primary-bg-hover transition-(--transition-primary) p-[2px] rounded-(--rounded-primary-small)">
+          <Logo size="small" scale={0.0175} />
+         </Link>
+         
         </div>
-        <ProfileCard/>
+        <ProfileCard />
       </div>
     </nav>
   );

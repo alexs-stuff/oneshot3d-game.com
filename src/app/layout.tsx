@@ -4,6 +4,7 @@ import Navbar from "@/components/layouts/ui/Navbar";
 import background from "#assets/background.png";
 import Image from "next/image";
 import Footer from "@/components/layouts/ui/Footer";
+import TwemojiProvider from "@/components/providers/TwemojiProvider";
 
 export const metadata: Metadata = {
   title: "OneShot 3D",
@@ -39,13 +40,16 @@ export default function RootLayout({
           alt=""
           className="blur-primary-scaled fixed inset-0 -z-100 h-screen w-screen scale-110 object-cover brightness-70 select-none"
         />
+        <TwemojiProvider>
         <Navbar />
         <div className="font-terminus mt-[calc(var(--navbar-margin)+var(--navbar-height))] flex min-h-[calc(100dvh-var(--navbar-margin)-var(--navbar-height))] flex-col justify-start">
-          <main className="text-primary-fg flex w-full h-full flex-col items-center">
+          <main className="text-primary-fg flex h-full w-full flex-col items-center flex-1">
             {children}
           </main>
         </div>
         <Footer />
+        </TwemojiProvider>
+
       </body>
     </html>
   );

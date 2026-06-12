@@ -21,7 +21,7 @@
   }
 
   a {
-    text-decoration:underline;
+    text-decoration: underline;
   }
 }
 
@@ -32,15 +32,19 @@
 
 @theme {
   --color-primary-bg: rgba(0, 0, 0, 0.55);
-  --color-primary-bg-hover: color-mix(in srgb, var(--color-primary-bg) 85%, white);
+  --color-primary-bg-hover: color-mix(
+    in srgb,
+    var(--color-primary-bg) 85%,
+    white
+  );
 
   --color-primary-bg-outline: rgba(255, 255, 255, 0.2);
   --color-primary-fg: #fff;
 
-  --color-secondary-bg: rgba(255,255,255, 0.55);
-  --color-secondary-fg: rgba(255,255,255,0.6);
+  --color-secondary-bg: rgba(255, 255, 255, 0.55);
+  --color-secondary-fg: rgba(255, 255, 255, 0.6);
 
-  --color-placeholder-primary: rgba(255,255,255,0.1)
+  --color-placeholder-primary: rgba(255, 255, 255, 0.1);
 }
 
 @theme {
@@ -50,7 +54,9 @@
   --blur-primary: 24px;
   --blur-secondary: 16px;
   --blur-primary-scaled: calc(var(--blur-primary) / var(--page-zoom-internal));
-  --blur-secondary-scaled: calc(var(--blur-secondary) / var(--page-zoom-internal));
+  --blur-secondary-scaled: calc(
+    var(--blur-secondary) / var(--page-zoom-internal)
+  );
 
   --transition-primary: 225ms;
 
@@ -69,7 +75,6 @@
   --font-terminus: "Terminus", monospace;
 }
 
-
 @keyframes size {
   0% {
     scale: 100%;
@@ -83,5 +88,12 @@
     scale: 100%;
   }
 }
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.1em;
+  display: inline;
+} 
 
 /* scrollbar type shit */

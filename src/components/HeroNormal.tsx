@@ -1,10 +1,8 @@
 interface props {
-    text: string,
+  text: string;
 }
-export default function HeroNorm({text}: props) {
-    return (
-        <h1 className="text-3xl text-center sm:text-left w-full pb-2">
-            {text}
-        </h1>
-    )
+export default function HeroNorm({ text }: props) {
+  return (
+    <h1 className="w-full pb-2 text-center text-3xl sm:text-left">{text}</h1>
+  );
 }

@@ -1,12 +1,11 @@
+import axios from "axios";
 
-import axios from "axios"
-
-type ApiCallUrl = "/users/v1/@me"
+type ApiCallUrl = "/users/v1/@me";
 
 export default async function apiCall(url: ApiCallUrl, method: string) {
-    const res = await axios({
-        method,
-        url
-    });
-    return res.data; 
+  const res = await axios({
+    method,
+    url,
+  });
+  return res.data;
 }
