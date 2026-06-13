@@ -63,6 +63,8 @@
   --rounded-primary: 24px;
   --rounded-secondary: 16px;
   --rounded-primary-small: calc(var(--rounded-primary) / 2);
+
+  --breakpoint-xs: 27.5rem;
 }
 
 @theme {
@@ -93,6 +95,6 @@ img.emoji {
   height: 1em;
   width: 1em;
   display: inline;
-} 
+}
 
 /* scrollbar type shit */

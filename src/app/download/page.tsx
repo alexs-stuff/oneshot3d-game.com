@@ -8,7 +8,7 @@ export default function DownloadPage() {
       <HeroNorm text="Downloads" />
       <span className="text-lg">OneShot 3D can be downloaded here:</span>
       <div>
-        <Button style={ButtonStyle.Seconday}>
+        <Button style={ButtonStyle.Secondary}>
           <span>Download on Itch</span>
         </Button>
       </div>

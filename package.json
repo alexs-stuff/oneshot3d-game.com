@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "bun run lint && bun run format && next build",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier . --write",
@@ -14,15 +14,18 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.9",
     "@iconify-react/fa7-brands": "^1.0.2",
+    "@iconify-solid/fa7-solid": "^1.0.2",
     "@iconify/react": "^6.0.2",
     "@twemoji/api": "^17.0.3",
     "axios": "^1.17.0",
     "negotiator": "^1.0.0",
     "next": "16.2.6",
+    "next-turnstile": "^1.0.7",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-twemoji": "^0.7.2",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",

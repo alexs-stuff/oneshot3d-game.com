@@ -28,7 +28,7 @@ export default function Button({ className, style, children, onClick }: props) {
     <button
       onClick={onClick}
       className={twMerge(
-        `${colorSelectors} min-h-6  rounded-(--rounded-secondary) px-6 py-2.75 transition-(--transition-primary)`,
+        `${colorSelectors} min-h-6 rounded-(--rounded-secondary) px-6 py-2.75 transition-(--transition-primary)`,
         className,
       )}>
       {children}

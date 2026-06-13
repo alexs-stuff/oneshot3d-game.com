@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   turbopack: {
     root: __dirname,
   },
